@@ -18,7 +18,7 @@ jobs:
           python-version: "3.x"
 
       - name: Install Semgrep
-        run: pip install -r .github/workflows/requirements.txt
+        run: pip install -r .github/workflows/semgrep-requirements.txt
 
       - name: Run Semgrep
         run: semgrep --config auto . --error
