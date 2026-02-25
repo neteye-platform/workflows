@@ -1,0 +1,34 @@
+name: Pre-commit checks
+on:
+  workflow_call:
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          path: current-repo
+
+      - name: Checkout workflows
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
+        with:
+          repository: neteye-platform/workflows
+          ref: main
+          path: .workflows
+
+      - name: Debug current paths
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Files in current directory:"
+          ls -la
+
+      - name: Run base pre-commit checks
+        uses: j178/prek-action@v1
+        with:
+          extra-args: "--all-files --config .workflows/pre-commit/.pre-commit-config.yaml"
+
+      - name: Run base pre-commit checks
+        if: ${{ hashFiles('.pre-commit-config.yaml') != '' }}
+        uses: j178/prek-action@v1
