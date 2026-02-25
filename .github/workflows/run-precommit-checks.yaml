@@ -16,7 +16,7 @@ jobs:
         with:
           repository: neteye-platform/workflows
           ref: main
-          path: .workflows
+          path: workflows
 
       - name: Debug current paths
         run: |
@@ -27,8 +27,11 @@ jobs:
       - name: Run base pre-commit checks
         uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 #v1.1.1
         with:
-          extra-args: "--all-files --config .workflows/pre-commit/.pre-commit-config.yaml"
+          extra-args: "--all-files --config ../workflows/pre-commit/.pre-commit-config.yaml"
+          working-directory: current-repo
 
-      - name: Run base pre-commit checks
+      - name: Run repo pre-commit checks
         if: ${{ hashFiles('.pre-commit-config.yaml') != '' }}
         uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 #v1.1.1
+        with:
+          working-directory: current-repo
