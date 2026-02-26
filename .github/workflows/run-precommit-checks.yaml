@@ -1,31 +1,34 @@
-name: Pre-commit checks
+name: Pre-commit Checks
+
 on:
   workflow_call:
 
 jobs:
-  linting:
+  pre-commit-checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout code
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           path: current-repo
 
-      - name: Checkout workflows
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
+      - name: Checkout repo-commons repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          repository: neteye-platform/workflows
+          repository: neteye-platform/repo-commons
           ref: main
-          path: workflows
+          path: repo-commons
 
-      - name: Run base pre-commit checks
-        uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 #v1.1.1
+      - name: Run common pre-commit checks
+        uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 # v1.1.1
         with:
-          extra-args: "--all-files --config ../workflows/pre-commit/.pre-commit-config.yaml"
+          extra-args: "--all-files --config ../repo-commons/pre-commit/.pre-commit-config.yaml"
           working-directory: current-repo
 
-      - name: Run repo pre-commit checks
+      - name: Run repository pre-commit checks
         if: ${{ hashFiles('current-repo/.pre-commit-config.yaml') != '' }}
-        uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 #v1.1.1
+        uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 # v1.1.1
         with:
           working-directory: current-repo

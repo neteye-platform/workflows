@@ -1,10 +1,10 @@
-name: Stale Workflow
+name: Stale Check
 
 on:
   workflow_call:
 
 jobs:
-  stale:
+  stale-check:
     runs-on: ubuntu-latest
     permissions:
       actions: write
