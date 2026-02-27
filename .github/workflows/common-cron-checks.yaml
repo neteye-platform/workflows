@@ -1,0 +1,16 @@
+name: Common Cron Checks
+
+on:
+  workflow_call:
+
+permissions:
+  actions: write
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  security-scan:
+    uses: ./.github/workflows/security-scan.yaml
+  stale-check:
+    uses: ./.github/workflows/stale-check.yaml
