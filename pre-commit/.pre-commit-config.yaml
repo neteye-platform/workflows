@@ -45,6 +45,6 @@ repos:
         types_or: [python, pyi]
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 92110f8f7c622b1f544fd9b509fd3588e4bec7c2 # frozen: v0.10.6
+    rev: 099118db1761b62a9c5a3680a66fa6e2d973bcad # frozen: 0.10.7
     hooks:
       - id: uv-lock
