@@ -5,6 +5,7 @@
     "group:recommended",
     "group:allNonMajor",
     "security:openssf-scorecard",
+    "helpers:pinGitHubActionDigests",
     ":disableDependencyDashboard"
   ],
   "pre-commit": {
