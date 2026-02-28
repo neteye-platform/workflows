@@ -27,6 +27,6 @@ repos:
       - id: actionlint
 
   - repo: https://github.com/gitleaks/gitleaks
-    rev: fb5d707e08fe0d2578b155458fdd53b6782dcab2 # frozen: v8.29.1
+    rev: 6eaad039603a4de39fddd1cf5f727391efe9974e # frozen: v8.30.0
     hooks:
       - id: gitleaks
