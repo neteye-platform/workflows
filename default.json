@@ -6,5 +6,8 @@
     "group:allNonMajor",
     "security:openssf-scorecard",
     ":disableDependencyDashboard"
-  ]
+  ],
+  "pre-commit": {
+    "enabled": true
+  }
 }
