@@ -1,13 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    "group:recommended",
+    "config:best-practices",
     "group:allNonMajor",
     "security:openssf-scorecard",
-    "helpers:pinGitHubActionDigests",
     ":disableDependencyDashboard"
   ],
+  // Explicitly enable pre-commit hooks update since it's a beta feature
   "pre-commit": {
     "enabled": true
   }
