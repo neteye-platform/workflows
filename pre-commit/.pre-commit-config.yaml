@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b # v5.0.0
+    rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b # frozen: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -17,16 +17,16 @@ repos:
         args: [--fix=lf]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: 63c8f8312b7559622c0d82815639671ae42132ac
+    rev: 63c8f8312b7559622c0d82815639671ae42132ac # frozen: v2.4.1
     hooks:
       - id: codespell
 
   - repo: https://github.com/rhysd/actionlint
-    rev: 0933c147c9d6587653d45fdcb4c497c57a65f9af
+    rev: 393031adb9afb225ee52ae2ccd7a5af5525e03e8 # frozen: v1.7.11
     hooks:
       - id: actionlint
 
   - repo: https://github.com/gitleaks/gitleaks
-    rev: fb5d707e08fe0d2578b155458fdd53b6782dcab2
+    rev: fb5d707e08fe0d2578b155458fdd53b6782dcab2 # frozen: v8.29.1
     hooks:
       - id: gitleaks
