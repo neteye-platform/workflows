@@ -1,3 +1,9 @@
+# NOTE: This workflow runs pre-commit checks on the current repository using the repo-commons pre-commit configuration.
+# The current repository is checked out inside the repo-commons repository to allow prek to run in workspace mode and permit
+# the current repository to skip hooks with the .prekignore file.
+# When prek will introduce a way to import pre-commit configurations from other repositories (https://github.com/j178/prek/issues/1238)
+# we can modify this workflow to run the pre-commit checks directly in the current repository.
+
 name: Pre-commit Checks
 
 on:
@@ -9,26 +15,17 @@ jobs:
     permissions:
       contents: read
     steps:
+      - name: Checkout repo-commons repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: neteye-platform/repo-commons
+
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           path: current-repo
 
-      - name: Checkout repo-commons repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          repository: neteye-platform/repo-commons
-          ref: main
-          path: repo-commons
-
       - name: Run common pre-commit checks
         uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 # v1.1.1
         with:
-          extra-args: "--all-files --config ../repo-commons/pre-commit/prek.toml"
-          working-directory: current-repo
-
-      - name: Run repository pre-commit checks
-        if: ${{ hashFiles('current-repo/prek.toml') != '' }}
-        uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 # v1.1.1
-        with:
-          working-directory: current-repo
+          extra-args: "--all-files"

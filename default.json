@@ -6,7 +6,6 @@
     "security:openssf-scorecard",
     ":disableDependencyDashboard"
   ],
-  // Explicitly enable pre-commit hooks update since it's a beta feature
   "pre-commit": {
     "enabled": true
   }
