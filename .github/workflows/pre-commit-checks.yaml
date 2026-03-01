@@ -24,11 +24,11 @@ jobs:
       - name: Run common pre-commit checks
         uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 # v1.1.1
         with:
-          extra-args: "--all-files --config ../repo-commons/pre-commit/.pre-commit-config.yaml"
+          extra-args: "--all-files --config ../repo-commons/pre-commit/prek.toml"
           working-directory: current-repo
 
       - name: Run repository pre-commit checks
-        if: ${{ hashFiles('current-repo/.pre-commit-config.yaml') != '' }}
+        if: ${{ hashFiles('current-repo/prek.toml') != '' }}
         uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037 # v1.1.1
         with:
           working-directory: current-repo

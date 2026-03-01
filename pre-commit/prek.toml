@@ -1,0 +1,58 @@
+[[repos]]
+repo = "https://github.com/pre-commit/pre-commit-hooks"
+rev = "3e8a8703264a2f4a69428a0aa4dcb512790b2c8c"
+hooks = [
+    { id = "trailing-whitespace" },
+    { id = "end-of-file-fixer" },
+    { id = "check-yaml", args = [
+        "--allow-multiple-documents",
+    ] },
+    { id = "check-added-large-files" },
+    { id = "check-merge-conflict" },
+    { id = "detect-private-key" },
+    { id = "check-case-conflict" },
+    { id = "check-executables-have-shebangs" },
+    { id = "check-shebang-scripts-are-executable" },
+    { id = "mixed-line-ending", args = [
+        "--fix=lf",
+    ] },
+    { id = "check-json", exclude = "^\\.envrc$" },
+    { id = "check-symlinks" },
+    { id = "check-toml" },
+]
+
+[[repos]]
+repo = "https://github.com/codespell-project/codespell"
+rev = "63c8f8312b7559622c0d82815639671ae42132ac"
+hooks = [{ id = "codespell" }]
+
+[[repos]]
+repo = "https://github.com/rhysd/actionlint"
+rev = "393031adb9afb225ee52ae2ccd7a5af5525e03e8"
+hooks = [{ id = "actionlint" }]
+
+[[repos]]
+repo = "https://github.com/gitleaks/gitleaks"
+rev = "6eaad039603a4de39fddd1cf5f727391efe9974e"
+hooks = [{ id = "gitleaks" }]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ruff-pre-commit"
+rev = "a27a2e47c7751b639d2b5badf0ef6ff11fee893f"
+hooks = [
+    { id = "ruff-check", types_or = [
+        "python",
+        "pyi",
+    ], args = [
+        "--fix",
+    ] },
+    { id = "ruff-format", types_or = [
+        "python",
+        "pyi",
+    ] },
+]
+
+[[repos]]
+repo = "https://github.com/astral-sh/uv-pre-commit"
+rev = "92110f8f7c622b1f544fd9b509fd3588e4bec7c2"
+hooks = [{ id = "uv-lock" }]
